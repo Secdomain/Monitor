@@ -1,0 +1,27 @@
+name: Pull Request Monitor Bot
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install requests
+    - name: Send alert
+      run: |
+        python send_notice.py ${{ secrets.API_TOKEN }} ${{ secrets.CHAT_ID }} $ACTOR $REPO_NAME $LINK_PULL $LINK_REPO
+      env:
+          REPO_NAME: ${{ github.repository }}
+          LINK_PULL: ${{ github.event.pull_request._links.html.href }}
+          ACTOR: ${{ github.actor }} 
+          LINK_REPO: ${{ github.repositoryUrl }}
