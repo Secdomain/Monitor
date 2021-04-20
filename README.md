@@ -1,6 +1,6 @@
 ## Pull Request Monitor Bot
 
-Bot that monitors Pull requests in the specified repository, and notifies via Telegram
+Bot that monitors Pull requests in the specified repository, and notifies via Telegram using workflows github
 
 
 ## Setup
