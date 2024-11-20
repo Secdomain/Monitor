@@ -1,4 +1,4 @@
-name: Pull Request Monitor Bot
+name: Monitor
 
 on: [pull_request]
 
