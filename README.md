@@ -2,7 +2,6 @@
 
 Bot that monitors Pull requests in the specified repository, and notifies via Telegram using Github workflows 
 
-
 # Setup
 
 ## Creating a Telegram Bot
